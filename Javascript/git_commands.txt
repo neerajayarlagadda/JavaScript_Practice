@@ -1,0 +1,17 @@
+From GIT Repo to Local System:
+----------------------------------
+git clone - first time downloading files from git repo
+git stauts
+git pull - downloadinf files from git repo every time
+
+
+From Local sytem to GIT Repo:
+-------------------------------
+git status - changes in red color
+git add filename - to add particular file from local to git
+git add * - to add all files from local to git
+git status - changes in green color
+git commit -m "write your message"
+git push -u origin master
+git status - working tree clean
+
