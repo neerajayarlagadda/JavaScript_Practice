@@ -1,0 +1,257 @@
+
+<html>
+    <head>
+    <style>
+   
+   * {
+     box-sizing: border-box;
+   }
+   ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   
+   /* Style the list items */
+    #ulid li {
+     position: relative;
+     padding: 12px 8px 12px 40px;
+     background: #eee;
+     font-size: 18px;
+    
+   }
+   
+   /* Set all odd list items to a different color (zebra-stripes) */
+   #ulid li:nth-child(odd) {
+     background: #f9f9f9;
+   }
+   
+   /* Darker background-color on hover */
+   #ulid:hover {
+     background: #ddd;
+   }
+   
+   
+   /* Style the close button */
+   .close {
+     position: absolute;
+     right: 0;
+     top: 0;
+     padding: 12px 16px 12px 16px;
+   }
+   
+   .close:hover {
+     background-color: #537df0;
+     color: white;
+   }
+   
+   /* Style the header */
+   .header {
+     background-color:rgb(226, 232, 245);
+     padding: 25px 50px;
+     color:black;
+     text-align: center;
+   }
+   
+   /* Clear floats after the header */
+   .header:after {
+     content: "";
+     display: table;
+     clear: both;
+   }
+   
+   /* Style the input */
+   #additem {
+     margin: 0;
+     border: none;
+     border-radius: 0;
+     width: 50%;
+     padding: 11px;
+     float: left;
+     font-size: 16px;
+     align-self: center;
+   }
+   #search {
+     margin: 0;
+     border: none;
+     border-radius: 0;
+     width: 25%;
+     padding: 7px;
+     float: right;
+     font-size: 12px;
+     align-self: right;
+   }
+   
+  
+   /* Style the "Add" button */
+   .addBtn {
+     padding: 10px;
+     width: 10%;
+     background: #d9d9d9;
+     color: #555;
+     float: left;
+     text-align: center;
+     font-size: 16px;
+     cursor: pointer;
+     border-radius: 0;
+   }
+   .searchBtn {
+     padding: 6px;
+     width: 7%;
+     background: #d9d9d9;
+     color: #555;
+     float: right;
+     text-align: center;
+     font-size: 12px;
+     cursor: pointer;
+     border-radius: 0;
+   }
+    
+   .clearBtn {
+     padding: 10px;
+     width: 15%;
+     background: #d9d9d9;
+     color: #555;
+     float: center;
+     text-align: center;
+     font-size: 16px;
+     cursor: pointer;
+     border-radius: 0;
+   }
+   
+   .addBtn:hover {
+     background-color: #bbb;
+   }
+   .clearBtn:hover {
+     background-color: #bbb;
+   }
+   .searchBtn:hover {
+     background-color: #bbb;
+   }
+   
+   </style>
+   </head>
+   
+   <body>
+
+   
+   <div id="myDIV" class="header">
+       <button id = "btnsearch" class = "searchBtn" onclick="searchTask()"> Search </button>
+        <input type="text" id="search" placeholder="Search here.." maxlength ="20">
+        
+        <br>
+    <h1>To-Do List</h1>
+         <br>
+   <input type="text" id="additem" placeholder="Add a task" maxlength ="20">
+   <button type="button" class = "addBtn" onclick="addTaskFunction()"> Add </button>
+  
+   
+   </div>
+     <div><ul id="ulid"></ul></div>
+     <div id="myDIV" class="header">
+     <button type="button" class = "clearBtn" onclick="clearAll()"> Clear </button>
+     <br>
+   </div>
+   </body>
+   
+   <script>
+           display(); // displays the existing tasks from local storage
+   
+           //function searchTask() : searches for the task /word entered in the search bar
+           function searchTask() 
+           {  
+               //document.getElementById("searchlist").innerHTML =""; // clears search list
+               var tasks = getItems(); // gets the tasks from local storage
+               var searchList = [];
+               for(let i=0;i<tasks.length;i++){
+                   if( document.getElementById('search').value){ // if entered value is not empty search begins
+                      searchList = tasks.filter(tasks => { // filter method returns an array of tasks which includes the entered text
+                           return tasks.includes(document.getElementById('search').value);
+                        });
+                   }
+               }
+                   if(searchList){
+                    document.getElementById("ulid").innerHTML =""; 
+                   for(let i=0;i<searchList.length;i++){ // loop to display search results as list
+                    createListElement(searchList[i]); // to display tasks a list
+                      /* let li = document.createElement("li");
+                       let t = document.createTextNode(searchList[i]);
+                       li.appendChild(t);
+                       document.getElementById("searchlist").appendChild(li);*/
+                   }
+                   }
+               document.getElementById("search").value = ""; // clear the text in the search bar 
+   
+           }
+            //function to add a Task to the list
+            function addTaskFunction() {  
+                   document.getElementById("ulid").innerHTML =""; 
+                   display();
+                   if( document.getElementById('additem').value){
+                   var newItem = document.getElementById("additem").value; // gets the entered text into newItem variable
+                   var item = getItems(); // gets the tasks list from local storage
+                   item.push(newItem); // adds the entered new task to the list
+                   localStorage.setItem('todolist', JSON.stringify(item)); // stores in the local storage
+                 // function call to create a list element 
+                   createListElement(newItem); // to display tasks a list
+                   document.getElementById("additem").value = ""; // clear the text field
+               }
+          }
+           
+           function getItems(){// gets the tasks from local storage
+              var item = new Array;
+              var itemList = localStorage.getItem('todolist') ;
+              if(itemList !== null){
+               item = JSON.parse(itemList); // converts string type to object (parsing)
+              }
+              return item; // returns the tasks as an array 
+           }
+   
+           function display(){ //displays all the elements in list
+               var arrayTask = getItems();
+               if(arrayTask!== null){
+                   for(let i=0;i<arrayTask.length;i++){
+                       createListElement(arrayTask[i]);// function call to create a list element 
+                    }
+               }
+           }
+   
+           function createListElement(listItem){ // creates a list item and appends to the existing
+               let li = document.createElement("li");
+               let t = document.createTextNode(listItem); // creates a text node with task as text and append it to the li
+               li.appendChild(t);
+               //Add close button beside list element
+               let button = document.createElement("button"); // adds close button to the task 
+               let txt = document.createTextNode("x");
+               button.className = "close";
+               button.appendChild(txt);
+               li.appendChild(button); // appends close button to the li
+               document.getElementById("ulid").appendChild(li); // display each task as list element
+               taskClose(); // checks for button close click
+           }
+          /*deletes the selected list element in the display and calls 
+           the taskdelete function by passing the index of the task to delete*/
+           function taskClose(){
+               let close = document.getElementsByClassName("close");      
+               for (let i = 0; i < close.length; i++) {
+                   close[i].onclick = function() { 
+                           let button = this.parentElement;
+                           button.style.display = "none";  // clears the task from the display
+                           taskdelete(i); //deletes   the task from local storage by passing the index of the task
+                       }
+               }
+           }
+   
+           function taskdelete(listindex){ // deletes the task from local storage
+               getItems();
+               var item = getItems();
+               item.splice(listindex,1); // splice method deletes the element with specified index
+               localStorage.setItem('todolist', JSON.stringify(item));
+           }
+   
+           function clearAll() { // clears all the existing items in the list
+               localStorage.removeItem('todolist'); // deletes from the local storage
+               document.getElementById("ulid").innerHTML = ""; 
+          }
+   </script>
+   </html>
