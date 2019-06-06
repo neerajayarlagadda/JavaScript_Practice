@@ -137,12 +137,12 @@
    
    <div id="myDIV" class="header">
        <button id = "btnsearch" class = "searchBtn" onclick="searchTask()"> Search </button>
-        <input type="text" id="search" placeholder="Search here.." maxlength ="20">
+        <input type="text" id="search" placeholder="Search here.." maxlength ="100">
         
         <br>
     <h1>To-Do List</h1>
          <br>
-   <input type="text" id="additem" placeholder="Add a task" maxlength ="20">
+   <input type="text" id="additem" placeholder="Add a task" maxlength ="100" onfocus="display()" >
    <button type="button" class = "addBtn" onclick="addTaskFunction()"> Add </button>
   
    
@@ -169,16 +169,16 @@
                            return tasks.includes(document.getElementById('search').value);
                         });
                    }
-               }
+                }
                    if(searchList){
-                    document.getElementById("ulid").innerHTML =""; 
-                   for(let i=0;i<searchList.length;i++){ // loop to display search results as list
-                    createListElement(searchList[i]); // to display tasks a list
-                      /* let li = document.createElement("li");
-                       let t = document.createTextNode(searchList[i]);
-                       li.appendChild(t);
-                       document.getElementById("searchlist").appendChild(li);*/
-                   }
+                        document.getElementById("ulid").innerHTML =""; 
+                      for(let i=0;i<searchList.length;i++){ // loop to display search results as list
+                          createListElement(searchList[i]); // to display tasks a list
+                            /* let li = document.createElement("li");
+                            let t = document.createTextNode(searchList[i]);
+                            li.appendChild(t);
+                            document.getElementById("searchlist").appendChild(li);*/
+                      }
                    }
                document.getElementById("search").value = ""; // clear the text in the search bar 
    
@@ -208,6 +208,7 @@
            }
    
            function display(){ //displays all the elements in list
+            document.getElementById("ulid").innerHTML ="";
                var arrayTask = getItems();
                if(arrayTask!== null){
                    for(let i=0;i<arrayTask.length;i++){

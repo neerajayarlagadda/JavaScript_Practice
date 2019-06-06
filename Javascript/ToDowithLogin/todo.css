@@ -1,0 +1,150 @@
+       
+       * {
+        box-sizing: border-box;
+        background-color:rgb(209, 215, 226);
+      }
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+      }
+      
+      /* Style the list items */
+       #ulid li {
+        position: relative;
+        padding: 12px 8px 12px 20px;
+        font-size: 18px;
+       
+      }
+      
+      
+      /* Darker background-color on hover */
+      #ulid:hover {
+        background: #ddd;
+      }
+      
+      
+      /* Style the close button */
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 12px 16px 12px 16px;
+      }
+      
+      .close:hover {
+        background-color: #537df0;
+        color: white;
+      }
+      
+      /* Style the header */
+      .header {
+       
+        padding: 25px 50px;
+        color:black;
+        text-align: center;
+      }
+      
+      /* Clear floats after the header */
+      
+      #user {
+       padding: 6px;
+        width: 7%;
+        color:black;
+        float: center;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 0;
+        font-weight: bold;
+      }
+
+      #logout{
+       padding: 4px;
+        width: 7%;
+        color:black;
+        float: right;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 0;
+        text-decoration: underline;
+      }
+    
+      #logout:hover{
+       background-color: #bbb;
+      }
+      
+      /* Style the input */
+      #additem {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        width: 50%;
+        padding: 11px;
+        float: center;
+        font-size: 16px;
+        align-self: center;
+        background-color: #bbb;
+      }
+      #search {
+       margin: 0;
+        border: none;
+        border-radius: 0;
+        width: 30%;
+        padding: 8px;
+        float: center;
+        font-size: 14px;
+        align-self: center;
+        background-color: #bbb;
+      }
+      
+     
+      /* Style the "Add" button */
+      .addBtn {
+        padding: 10px;
+        width: 10%;
+        background: #d9d9d9;
+        color:black;
+        float: center;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 0;
+        
+      }
+      .searchBtn {
+       padding: 7px;
+        width: 7%;
+        background: #d9d9d9;
+        color:black;
+        float: center;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 0;
+       
+      }
+       
+      .clearBtn {
+       padding: 7px;
+        width: 7%;
+        background: #d9d9d9;
+        color:black;
+        float: center;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 0;
+        
+      }
+      
+      .addBtn:hover {
+        background-color: #bbb;
+      }
+      .clearBtn:hover {
+        background-color: #bbb;
+      }
+      .searchBtn:hover {
+        background-color: #bbb;
+      }

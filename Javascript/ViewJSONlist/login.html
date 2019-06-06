@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="login.css">
+<title>Login </title>
+
+</head>
+<body>
+ <div class="container">
+<div class="main">
+<h1>Login</h1>
+<form id="form_id" method="post" name="myform" onsubmit='return formValidation()'>
+    <label>User Name :</label>
+    <input type="text"  id="username" placeholder="Enter user name" maxlength ="20" required><br>
+    <label>Password :</label>
+    <input type="password"  id="password" placeholder="Enter password" maxlength ="20" required><br>
+    <button type="button" id = "submit" onclick="validate()"> Login </button>
+</form>
+</div>
+</div>
+<script src="login.js"></script>
+</body>
+</html>

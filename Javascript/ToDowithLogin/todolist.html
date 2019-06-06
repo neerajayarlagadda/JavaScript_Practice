@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+        <head>
+            <link rel="stylesheet" href="todo.css">
+       
+       </head>
+       
+       <body  onunload="removeStorage()">
+        <div id="myDIV" class="header">
+          <label id= "user"></label>
+          <br>
+          <label id= "logout" onclick="logout()"> Logout</label>
+          <br>
+          <br>
+          <br>
+          <br>
+     <input type="text" id="additem" placeholder="Add a task" maxlength ="100" onfocus="display()">
+     <button type="button" class = "addBtn" onclick="addTaskFunction()"> Add </button>
+     <br>
+     <br>
+      <input type="text" id="search" placeholder="Search here.." maxlength ="100">
+      <button id = "btnsearch" class = "searchBtn" onclick="searchTask()"> Search </button>
+    
+     
+     </div>
+       <div><ul id="ulid"></ul></div>
+       <div id="myDIV" class="header">
+       <button type="button" class = "clearBtn" onclick="clearAll()"> Clear </button>
+       <br>
+     </div>
+     </body>
+       <script src="todo.js"></script>
+       </body>
+       
+
+       </html>

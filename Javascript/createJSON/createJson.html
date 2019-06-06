@@ -1,0 +1,73 @@
+<html>
+   <head>
+      <title>Creating Object JSON with JavaScript</title>
+      <script >
+
+
+      /*   var fruits = { "Apple":
+                            {"Title" : "Apple" ,
+                             "Description": "An apple is a sweet, edible fruit produced by an apple tree (Malus pumila). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus.",
+                              "Image":"https://5.imimg.com/data5/YY/EN/MY-8155364/fresh-apple-500x500.jpg"},
+                         "Mango" :
+                             {"Title" : "Mango" ,
+                              "Description": "Mangoes are juicy stone fruit (drupe) from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit. The majority of these species are found in nature as wild mangoes. ",
+                              "Image":"http://organic.msquared.in/wp-content/uploads/sites/10/2016/05/mangoes-2.jpg"},
+                         "Kiwi" :
+                            {"Title" : "Kiwi" ,
+                             "Description": "Kiwi berries are edible berry- or grape-sized fruits similar to fuzzy kiwifruit in taste and appearance, but with thin, smooth green skin. They are primarily produced by three species: Actinidia arguta (hardy kiwi), A. kolomikta (Arctic kiwifruit) and A. polygama (silver vine).",
+                             "Image":"https://cdn1.medicalnewstoday.com/content/images/headlines/271/271232/kiwifruit.jpg"}
+                         };
+
+                       
+                         localStorage.setItem('fruits',JSON.stringify(fruits));
+         document.write("<h1>Fruits</h1>");
+         document.write("<br>");
+         document.write("<p>Title: "+fruits.Apple.Title+"</p>");  
+         document.write("<p>Description: "+fruits.Apple.Description+"</p>"); 
+         var txt = "Image ";
+         document.write("<p>" + txt.link(fruits.Apple.Image) + "</p><br><br>");
+         
+         document.write("<p>Title: "+fruits.Mango.Title+"</p>");  
+         document.write("<p>Description: "+fruits.Mango.Description+"</p>"); 
+        // var txt = "Image ";
+         document.write("<p>" + txt.link(fruits.Mango.Image) + "</p><br><br>");
+
+         document.write("<p>Title: "+fruits.Kiwi.Title+"</p>");  
+         document.write("<p>Description: "+fruits.Kiwi.Description+"</p>"); 
+        // var txt = "Image ";
+         document.write("<p>" + txt.link(fruits.Kiwi.Image) + "</p>");
+
+*/
+
+           var fruits =  [
+                            {"Title" : "Apple" ,
+                             "Description": "An apple is a sweet, edible fruit produced by an apple tree (Malus pumila). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus.",
+                              "Image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7FwenuEk-0KaUamx1maFZoAu67WF5yy2TW_jWl2pVnDx5mdFY"},
+                         
+                             {"Title" : "Mango" ,
+                              "Description": "Mangoes are juicy stone fruit (drupe) from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit. The majority of these species are found in nature as wild mangoes. ",
+                              "Image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx2Kxh3lAWDNdTobJappsUJh9bJ54j47P7QDJ_L2E_lA2_nytdyA"},
+                        
+                            {"Title" : "Kiwi" ,
+                             "Description": "Kiwi berries are edible berry- or grape-sized fruits similar to fuzzy kiwifruit in taste and appearance, but with thin, smooth green skin. They are primarily produced by three species: Actinidia arguta (hardy kiwi), A. kolomikta (Arctic kiwifruit) and A. polygama (silver vine).",
+                             "Image":"https://cdn1.medicalnewstoday.com/content/images/headlines/271/271232/kiwifruit.jpg"}
+                         ];          
+             
+                        localStorage.setItem('fruits',JSON.stringify(fruits));
+                        
+                        for(i=0;i<fruits.length;i++){
+                                document.write("<h4> Title:"+fruits[i].Title+"</h4>");
+                                document.write("<h4> Description:</h4> <p>"+fruits[i].Description+"</p>");
+                                var a = document.createElement('a');
+                                a.setAttribute('href',fruits[i].Image);
+                                a.innerHTML = "Image";
+                                document.body.appendChild(a);    
+                        }
+         
+
+      </script>
+   </head>
+   
+   <body>
+   </body>	
+</html>
