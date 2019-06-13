@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <link rel="stylesheet" href="details.css">
+</head>
+       
+<!-- <body  onunload="removeStorage()"> -->
+  <body>
+<div id="myDIV" class="header">
+     <label id= "user"></label>
+     <br>
+     <label id= "logout" onclick="logout()"></label>
+     <br><br>
+          
+            <input type="text" id="search" placeholder="Search here.." maxlength ="100">
+            <button id = "btnsearch" class = "searchBtn" onclick="searchTask()" onblur="displayDetails()"> Search </button>
+            
+</div>
+<div>
+    <ul id="ulid" class = "ulid"></ul>
+</div>
+<div id="myDIV" class="header">
+        <button type="button" class = "addBtn" onclick="addTaskFunction()"> Add </button>
+        <button type="button" class = "clearBtn" onclick="clearFunction()"> Clear </button>
+        <br>
+      </div>
+
+</body>
+<script src="details.js"></script>

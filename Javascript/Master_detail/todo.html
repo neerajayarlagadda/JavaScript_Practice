@@ -1,0 +1,116 @@
+
+<html>
+        <head>
+        <style>
+       
+       * {
+         box-sizing: border-box;
+         background-color:rgb(226, 232, 245);
+       }
+
+       /* Style the header */
+       .header {
+         background-color:rgb(226, 232, 245);
+         padding: 25px 50px;
+         color:black;
+         text-align: left;
+       }
+       
+       /* Clear floats after the header */
+       .header:after {
+         content: "";
+         display: table;
+         clear: both;
+       }
+       
+       /* Style the input */
+       input {
+         margin: 0;
+         background-color: #bbb;
+         border: black;
+         border-radius: 3;
+         width: auto;
+         padding: 7px;
+         float: left;
+         font-size: 12px;
+         align-self: center;
+       }
+       
+      
+       /* Style the "Add" button */
+       .addBtn {
+         padding: 8px;
+         width: auto;
+         background: #d9d9d9;
+         color: #555;
+         float: left;
+         text-align: center;
+         font-size: 12px;
+         cursor: pointer;
+         border-radius: 0;
+       }
+       
+       .addBtn:hover {
+         background-color: #bbb;
+       }
+       #additem:hover {
+         background-color: #bbb;
+       }
+       </style>
+       </head>
+       
+       <body>
+    
+       
+       <div id="myDIV" class="header">
+       <input type="text" id="title" placeholder="Title"> <br><br>
+       <input type="text" id="desc" placeholder="Description" > <br><br>
+       <!--<input type="file" id="image" > <br><br> -->
+    
+      <input type="file"  onchange="previewFile()"><br><br> 
+      <img  src="" id="image" height="100" alt=""  ><br><br>
+       <button type="button" class = "addBtn" onclick="addTaskFunction()"> Add </button> 
+       </div>
+       </body>
+       
+       <script>
+          let source;
+          function addTaskFunction(){  
+                    var newTitle = document.getElementById("title").value; // gets the entered text into newItem variable
+                    var newdesc = document.getElementById("desc").value; 
+                    // var newImage = document.getElementById("image").value;
+                    var newImage = source;
+                    console.log(source);
+                    var newFruit = {Title: newTitle, Description: newdesc, Image: newImage};
+                    var fruitslist=localStorage.getItem('fruits'); // gets the tasks list from local storage
+                    var fruits  = new Array;
+                          if(fruitslist !== null){
+                          fruits = JSON.parse(fruitslist); // converts string type to object (parsing)
+                          }
+                    fruits.push(newFruit); // adds the entered new task to the list
+                    localStorage.setItem('fruits', JSON.stringify(fruits));
+                    window.location = "details.html";                 
+          } 
+        function previewFile() {
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+          
+            reader.onloadend = function () {
+              preview.src = reader.result;
+            }
+          
+            if (file) {
+              reader.readAsDataURL(file);
+            } else {
+              preview.src = "";
+            }
+            sourceurl=preview.src.substring(0, preview.src.lastIndexOf("/"));
+            source = sourceurl+'/images/'+file.name;
+            console.log(source);
+            console.log(sourceurl);
+            console.log(preview.src);
+        }
+          
+       </script>
+       </html>
